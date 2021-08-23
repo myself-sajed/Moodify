@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="shortcut icon" href="media/logos/black logo.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+    <!--load all styles -->
+    <title>Moodify | On Your Mood</title>
+
+    <style>
+        html,
+        body {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .radio__container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav__logo {
+            align-items: center;
+            width: 150px;
+            scroll-behavior: smooth;
+        }
+
+        .flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+
+        }
+
+        .nav__link {
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            font-size: 20px;
+            font-family: 'Staatliches', cursive;
+        }
+
+        .branding.scrolled>.active {
+            color: rgb(12, 158, 77);
+
+        }
+
+        .alert {
+            border-radius: 0px;
+
+        }
+
+        .container__nav {
+            transition: cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .carousel {
+            height: 50%;
+        }
+
+        .branding.scrolled {
+            background-color: #ffffff !important;
+            transition: background-color 200ms linear;
+
+        }
+
+        .branding.scrolled>a {
+            color: black;
+
+        }
+
+        .branding.scrolled>.nav__link:hover {
+            color: rgb(255, 255, 255);
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .branding.scrolled>div {
+            border-radius: 0px;
+
+        }
+
+        .branding.scrolled>form>button {
+            background-color: black;
+
+        }
+
+        .nav__link:hover {
+            color: green;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .active {
+            color: green;
+        }
+
+        .modal-content {
+            border-radius: 15px;
+        }
+
+        .mood-buttons {
+            background-color: black;
+            border-color: black;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!-- MODAL  -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="main-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel"><img src="media/logos/black logo.png" height="30px"
+                            width="30px" alt=""> Moodify | What's your mood?</h5>
+                    <a href="/" type="button" class="btn-close" aria-label="Close"></a>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <img src="media/svg/modal.svg" alt="" height="250px" width="250px">
+                        <p>
+                        <p class="fs-1">What's your Mood?</p>
+                        </p>
+                        <p>Tell us about your mood so we can find
+                            <strong>best songs for you</strong>
+                        </p>
+                    </div>
+
+                    <hr>
+
+
+                    <!-- Radio -->
+                    <p class="text-center">
+                        <strong>Choose now</strong>
+                    </p>
+
+                    <div class="radio__container">
+                        <input type="radio" class="btn-check options" name="options" id="option1" value="chill"
+                            autocomplete="off" checked />
+                        <label class="btn btn-success mood-buttons mx-2" for="option1">Chill</label>
+
+                        <input type="radio" class="btn-check options" name="options" id="option2" value="sad"
+                            autocomplete="off" />
+                        <label class="btn btn-success mood-buttons mx-2" for="option2">Sad</label>
+
+                        <input type="radio" class="btn-check options" name="options" id="option3" value="stressed"
+                            autocomplete="off" />
+                        <label class="btn btn-success mood-buttons mx-2" for="option3">Stressed</label>
+
+                        <input type="radio" class="btn-check options" name="options" id="option4" value="travelling"
+                            autocomplete="off" />
+                        <label class="btn btn-success mood-buttons mx-2" for="option4">Travelling</label>
+
+                        <input type="radio" class="btn-check options" name="options" id="option5" value="love"
+                            autocomplete="off" />
+                        <label class="btn btn-success mood-buttons mx-2" for="option5">In Love</label>
+
+                        <input type="radio" class="btn-check options" name="options" id="option6" value="breakup"
+                            autocomplete="off" />
+                        <label class="btn btn-success mood-buttons mx-2" for="option6">Breakup</label>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="/" type="button" class="btn btn-secondary">Go back</a>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        id="moodify-button">Moodify</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <!-- MODAL ENDS -->
+
+    <!-- 1. NAVBAR -->
+    <div class="container sticky-top my-3">
+        <div class=" navbar container-fluid container__nav flex sticky-top shadow-lg bg-dark branding py-2"
+            style="border-radius:30px ;">
+
+            <a href="/explore" class="nav__link">All Songs</a>
+            <a href="/mood" class="nav__link active">Mood</a>
+            <a href="/" class="nav__link"><img class="nav__logo" src="media/logos/faint green.png" alt=""></a>
+            <form class="d-flex">
+                <input class="form-control me-2 px-4" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-light" type="submit">Search</button>
+            </form>
+
+
+        </div>
+    </div>
+
+
+    <!-- Middle Section -->
+    <div class="container" id="middle__section">
+
+
+        <!-- <div class="bg-success container" style="border-radius: 20px;">
+            <div class="container">
+                <div class="row align-items-center g-0">
+                    <div class="col-xl-5 col-lg-6 col-md-12">
+                        <div class="py-5 py-lg-0">
+                            <h1 class="text-white display-4 fw-bold">Are you sad?
+                            </h1>
+                            <p class="text-white mb-4 lead">
+                                Every mood has it's own beauty. Our experts recommend best songs for your current mood.
+                            </p>
+
+                            <a href="/explore" class="btn btn-light ">Explore</a>
+                        </div>
+                    </div>
+                    <div class=" col-xl-7 col-lg-6 col-md-12 text-lg-end text-center">
+                        <img src="media/svg/love.svg" height="400px" width="400px" alt="" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+
+    </div>
+
+    <!-- For You -->
+
+    <div class="container my-5">
+        <div class="fs-2 mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                class="bi bi-play-circle-fill" viewBox="0 0 16 16">
+                <path
+                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z">
+                </path>
+            </svg>
+            For You
+        </div>
+        <hr>
+        <div class="container">
+            <div class="row" id="song__container">
+
+            </div>
+        </div>
+
+    </div>
+
+    <br>
+
+    </div>
+
+    <br><br>
+    <!-- . Footer -->
+    <div class="container">
+        <footer class="text-center text-lg-start bg-light text-muted sticky-bottom">
+            <!-- Section: Social media -->
+            <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+                <!-- Left -->
+                <div class="me-5 d-none d-lg-block">
+                    <span>Get connected with us on social networks:</span>
+                </div>
+                <!-- Left -->
+
+                <!-- Right -->
+                <div>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="" class="me-4 text-reset">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+                <!-- Right -->
+            </section>
+            <!-- Section: Social media -->
+
+            <!-- Section: Links  -->
+            <section class="">
+                <div class="container text-center text-md-start mt-5">
+                    <!-- Grid row -->
+                    <div class="row ">
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-6 mx-auto mb-4">
+                            <!-- Content -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                <img src="media/logos/white logo.png" alt="" height="40px" width="40px">
+                                <b>Moodify</b>
+                            </h6>
+                            <p>
+                                Listen up what your heart says to listen! <br>
+                                Wide genres of songs for your contineously changing mood. <br>
+                                Moodify | On Your Mood
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+
+
+
+
+                        <!-- Grid row -->
+                    </div>
+            </section>
+            <!-- Section: Links  -->
+
+            <!-- Copyright -->
+            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+                © 2021 Copyright: <b>Moodify.com</b>
+            </div>
+            <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+    <script>
+
+        // For Scrolling Navbar
+        $(function () {
+            $(document).scroll(function () {
+                var $nav = $(".branding");
+                $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+            });
+        });
+
+        // For modal autorefresh
+
+        $(window).on('load', function () {
+            $('#main-modal').modal('show');
+        });
+
+
+
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+    <script src="js/mood.js" defer></script>
+    <!-- <script>
+        function getData() {
+
+            let a = $('input[name="options"]:checked').val();
+            console.log(a);
+
+        }
+    </script> -->
+
+
+
+</body>
+
+</html>
